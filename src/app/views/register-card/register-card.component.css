@@ -1,0 +1,7 @@
+label {
+  display: flex;
+}
+
+.error {
+  background-color: red;
+}

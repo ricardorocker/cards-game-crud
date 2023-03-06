@@ -1,3 +1,4 @@
+import { Card } from './../interfaces/card';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,7 +11,11 @@ export class LocalStorageService {
     this.storage = window.localStorage;
   }
 
-  set(key: string, value: string) {
-    this.storage.setItem(key, value)
+  createCard(key: string, value: Card[]) {
+    this.storage.setItem(key, JSON.stringify(value))
+  }
+
+  getCard(key: string): Card[] {
+    return JSON.parse(this.storage.getItem(key) || '{}')
   }
 }

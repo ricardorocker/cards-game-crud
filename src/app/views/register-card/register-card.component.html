@@ -1,1 +1,39 @@
-<p>register-card works!</p>
+<form [formGroup]="form" (ngSubmit)="onCreateCard()">
+  <label>
+    <span>Id*:</span>
+    <input type="number" name="id" id="id" formControlName="id" placeholder="Insira o código">
+  </label>
+  <label>
+    <span>Nome*:</span>
+    <input type="text" name="name" id="name" formControlName="name" placeholder="Insira o nome">
+  </label>
+  <label>
+    <span>Descrição*:</span>
+    <input type="text" name="description" id="description" formControlName="description"
+      placeholder="Insira a descrição">
+  </label>
+  <label>
+    <span>Ataque*:</span>
+    <input type="number" name="atack" id="atack" formControlName="atack" placeholder="Insira o ataque">
+  </label>
+  <label>
+    <span>Defesa*:</span>
+    <input type="number" name="defense" id="defense" formControlName="defense" placeholder="Insira a defesa">
+  </label>
+  <label>
+    <span>Tipo*:</span>
+    <select name="type" id="type" formControlName="type">
+      <option *ngFor="let type of types" [ngValue]="type.value">{{ type.name }}</option>
+    </select>
+  </label>
+  <label>
+    <span>Classe*:</span>
+    <select name="class" id="class" formControlName="class">
+      <option *ngFor="let class of classes" [ngValue]="class.value">{{ class.name }}</option>
+    </select>
+  </label>
+  <button type="submit">Criar</button>
+</form>
+<div class="error">
+  {{ error }}
+</div>

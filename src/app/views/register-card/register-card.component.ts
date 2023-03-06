@@ -66,6 +66,7 @@ export class RegisterCardComponent {
 
       this.localStorage.createCard(idCard, this.card);
 
+      console.log(localStorage);
     } else {
       this.error = 'Campos obrigatórios!'
     }

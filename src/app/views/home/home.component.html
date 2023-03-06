@@ -1,2 +1,12 @@
-<p>home works!</p>
-<app-register-card></app-register-card>
+<p>Cartas Jogo</p>
+<div *ngIf="cards.length > 0; else templateName">
+<div *ngFor="let card of cards">
+  <div>{{ card.id }} - {{ card.name }}</div>
+  <div>{{ card.description }}</div>
+</div>
+</div>
+<ng-template #templateName>
+  Não há cartas cadastradas, por favor, cadastre novas!
+</ng-template>
+
+<button routerLink="/create-card">Criar nova carta</button>

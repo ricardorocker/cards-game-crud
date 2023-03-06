@@ -18,4 +18,13 @@ export class LocalStorageService {
   getCard(key: string): Card[] {
     return JSON.parse(this.storage.getItem(key) || '{}')
   }
+
+  getAllCards() {
+    const data = [];
+    for (let i = 0; i < localStorage.length; i++) { // itera através dos elementos no localStorage
+      const item = localStorage.getItem(localStorage.key(i) || '{}'); // pega o item atual do localStorage
+      data.push(JSON.parse(item || '{}')); // adiciona o item convertido em um objeto para o array data
+    }
+    return [].concat(...data); // retorna o array data como um array com apenas objetos
+  };
 }

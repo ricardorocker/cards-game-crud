@@ -28,8 +28,12 @@ export class LocalStorageService {
     return [].concat(...data); // retorna o array data como um array com apenas objetos
   };
 
-  removeCard(key: string) {
+  removeCard(id: number, cards: Card[]) {
+    const key = id.toString();
+    const index = cards.findIndex(item => item.id === id);
+
     this.storage.removeItem(key);
+    cards.splice(index, 1);
   }
 
 }

@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../services/local-storage.service';
 import { Card } from './../../interfaces/card';
 import { Component, Input } from '@angular/core';
 
@@ -10,12 +11,9 @@ export class CardGameComponent {
   @Input() cards: Card[] = [];
   @Input() hasFooter: boolean = false;
 
-  // ngOnInit(): void{
-  //   console.log("App CARD-GAME: ",this.card);
-  // }
+  constructor(private localStorageService: LocalStorageService) {}
 
   onRemoveCard(card: Card) {
-
+    this.localStorageService.removeCard(card.id, this.cards);
   }
-
 }

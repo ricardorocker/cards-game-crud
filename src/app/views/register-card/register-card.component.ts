@@ -1,6 +1,6 @@
 import { Card } from './../../interfaces/card';
 import { LocalStorageService } from './../../services/local-storage.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './register-card.component.html',
   styleUrls: ['./register-card.component.css']
 })
-export class RegisterCardComponent {
+export class RegisterCardComponent implements OnInit {
   form!: FormGroup
   card: Card[] = [];
   error: string = '';
@@ -45,7 +45,19 @@ export class RegisterCardComponent {
     })
   }
 
-  onCreateCard() {
+  findInvalidControls(): void {
+    const invalidControls = [];
+    const controls = this.form.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalidControls.push(this.getDescription(name));
+      }
+    }
+    const plural = invalidControls.length > 1 ? 's' : '';
+    this.error = `Verifique o${plural} campo${plural} ${invalidControls.join(', ')}.`;
+  }
+
+  onCreateCard(): void {
     this.error = '';
 
     if (this.form.valid) {
@@ -71,8 +83,29 @@ export class RegisterCardComponent {
       this.route.navigateByUrl('');
 
     } else {
-      this.error = 'Campos obrigatórios!'
+      this.findInvalidControls();
     }
+  }
 
+  getDescription(fieldsEnum: string): string {
+    switch (fieldsEnum) {
+      case 'id':
+        return "Código";
+      case 'name':
+        return "Nome";
+      case 'description':
+        return "Descrição";
+      case 'atack':
+        return "Ataque";
+      case 'defense':
+        return "Defesa";
+      case 'type':
+        return "Tipo";
+      case 'class':
+        return "Classe";
+      default:
+        break;
+    }
+    return "";
   }
 }

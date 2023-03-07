@@ -16,5 +16,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.cards = this.localStorageService.getAllCards();
+    console.log(this.cards)
+  }
+
+  onRemoveCard(card: Card) {
+    this.localStorageService.removeCard(JSON.stringify(card));
+    // const index = this.cards.indexOf(card.id);
+    // this.cards.splice()
   }
 }

@@ -27,4 +27,9 @@ export class LocalStorageService {
     }
     return [].concat(...data); // retorna o array data como um array com apenas objetos
   };
+
+  removeCard(key: string) {
+    this.storage.removeItem(key);
+  }
+
 }

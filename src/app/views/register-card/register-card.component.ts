@@ -2,6 +2,7 @@ import { Card } from './../../interfaces/card';
 import { LocalStorageService } from './../../services/local-storage.service';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-card',
@@ -14,21 +15,22 @@ export class RegisterCardComponent {
   error: string = '';
 
   types = [
-    { name: 'Magia', value: "1" },
-    { name: 'Criatura', value: "2" }
+    { name: 'Magia', value: "Magia" },
+    { name: 'Criatura', value: "Criatura" }
   ]
 
   classes = [
-    { name: 'Mago', value: "1" },
-    { name: 'Paladino', value: "2" },
-    { name: 'Caçador', value: "3" },
-    { name: 'Druida', value: "4" },
-    { name: 'Qualquer', value: "5" }
+    { name: 'Mago', value: "Mago" },
+    { name: 'Paladino', value: "Paladino" },
+    { name: 'Caçador', value: "Caçador" },
+    { name: 'Druida', value: "Druida" },
+    { name: 'Qualquer', value: "Qualquer" }
   ]
 
   constructor(
     private formBuilder: FormBuilder,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -65,8 +67,9 @@ export class RegisterCardComponent {
       })
 
       this.localStorage.createCard(idCard, this.card);
+      this.form.reset()
+      this.route.navigateByUrl('');
 
-      console.log(localStorage);
     } else {
       this.error = 'Campos obrigatórios!'
     }

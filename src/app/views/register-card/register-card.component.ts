@@ -43,6 +43,8 @@ export class RegisterCardComponent implements OnInit {
       type: ['', Validators.required],
       class: ['', Validators.required]
     })
+
+    console.log(this.card);
   }
 
   findInvalidControls(): void {
@@ -108,4 +110,19 @@ export class RegisterCardComponent implements OnInit {
     }
     return "";
   }
+
+  // onChange(event: Event) {
+  //   const target = event.target as HTMLInputElement;
+  //   const control: any = target.id;
+  //   const value: any = target.value;
+
+  //   const obj = {
+  //     [control]: value
+  //   }
+  //   this.card.push(obj);
+
+  //   // this.card[control] = value;
+
+  //   console.log(this.card);
+  // }
 }

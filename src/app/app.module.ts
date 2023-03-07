@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './components/default-layout/default-layout.component';
 import { HomeComponent } from './views/home/home.component';
 import { RegisterCardComponent } from './views/register-card/register-card.component';
+import { CardGameComponent } from './components/card-game/card-game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DefaultLayoutComponent,
-    RegisterCardComponent
+    RegisterCardComponent,
+    CardGameComponent
   ],
   imports: [
     BrowserModule,

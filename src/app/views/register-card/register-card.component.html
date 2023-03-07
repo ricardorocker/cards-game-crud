@@ -1,45 +1,55 @@
 <button class="btn btn-link my-4" routerLink="">Voltar para Home</button>
+<div class="row">
+  <div class="col">
+    <div class="card px-5" style="width: 40rem;">
+      <form [formGroup]="form" (ngSubmit)="onCreateCard()">
+        <div class="form-group">
+          <label>Código*</label>
+          <input type="number" class="form-control" name="id" id="id" formControlName="id"
+            placeholder="Insira o código">
+            <!-- (change)="onChange($event)" -->
+        </div>
+        <div class="form-group">
+          <label>Nome*</label>
+          <input class="form-control" type="text" name="name" id="name" formControlName="name"
+            placeholder="Insira o nome">
+        </div>
+        <div class="form-group">
+          <label>Descrição*</label>
+          <input class="form-control" type="text" name="description" id="description" formControlName="description"
+            placeholder="Insira a descrição">
+        </div>
+        <div class="form-group">
+          <label>Ataque*</label>
+          <input class="form-control" type="number" name="atack" id="atack" formControlName="atack"
+            placeholder="Insira o ataque">
+        </div>
+        <div class="form-group">
+          <label>Defesa*</label>
+          <input class="form-control" type="number" name="defense" id="defense" formControlName="defense"
+            placeholder="Insira a defesa">
+        </div>
+        <div class="form-group">
+          <span class="form-group">Tipo*</span>
+          <select class="form-control" name="type" id="type" formControlName="type">
+            <option *ngFor="let type of types" [ngValue]="type.value">{{ type.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <span class="form-group">Classe*</span>
+          <select class="form-control" name="class" id="class" formControlName="class">
+            <option *ngFor="let class of classes" [ngValue]="class.value">{{ class.name }}</option>
+          </select>
+        </div>
+        <button class="btn btn-success my-4 w-100" type="submit">Criar nova carta</button>
+      </form>
+      <div *ngIf="error" class="alert alert-danger" role="alert">
+        {{ error }}
+      </div>
+    </div>
+  </div>
 
-<div class="card px-5" style="width: 40rem;">
-  <form [formGroup]="form" (ngSubmit)="onCreateCard()">
-    <div class="form-group">
-      <label>Código*</label>
-      <input type="number" class="form-control" name="id" id="id" formControlName="id" placeholder="Insira o código">
-    </div>
-    <div class="form-group">
-      <label>Nome*</label>
-      <input class="form-control" type="text" name="name" id="name" formControlName="name" placeholder="Insira o nome">
-    </div>
-    <div class="form-group">
-      <label>Descrição*</label>
-      <input class="form-control" type="text" name="description" id="description" formControlName="description"
-        placeholder="Insira a descrição">
-    </div>
-    <div class="form-group">
-      <label>Ataque*</label>
-      <input class="form-control" type="number" name="atack" id="atack" formControlName="atack"
-        placeholder="Insira o ataque">
-    </div>
-    <div class="form-group">
-      <label>Defesa*</label>
-      <input class="form-control" type="number" name="defense" id="defense" formControlName="defense"
-        placeholder="Insira a defesa">
-    </div>
-    <div class="form-group">
-      <span class="form-group">Tipo*</span>
-      <select class="form-control" name="type" id="type" formControlName="type">
-        <option *ngFor="let type of types" [ngValue]="type.value">{{ type.name }}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <span class="form-group">Classe*</span>
-      <select class="form-control" name="class" id="class" formControlName="class">
-        <option *ngFor="let class of classes" [ngValue]="class.value">{{ class.name }}</option>
-      </select>
-    </div>
-    <button class="btn btn-success my-4 w-100" type="submit">Criar nova carta</button>
-  </form>
-  <div *ngIf="error" class="alert alert-danger" role="alert">
-    {{ error }}
+  <div class="col" *ngIf="card.length > 0">
+    <app-card-game [cards]="card"></app-card-game>
   </div>
 </div>

@@ -4,6 +4,6 @@ export interface Card {
   description: string,
   atack: number,
   defense: number,
-  type: number,
-  class: number,
+  type: string,
+  class: string,
 }

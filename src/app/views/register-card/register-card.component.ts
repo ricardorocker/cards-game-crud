@@ -48,6 +48,9 @@ export class RegisterCardComponent implements OnInit {
   ngOnInit(): void {
     const idCard = this.activateRoute.snapshot.paramMap.get('id');
 
+    console.log("EDIT - idCard: ", idCard);
+    console.log("EDIT - localStorage: ", localStorage);
+
     if (idCard) {
       this.isNewRecord = false;
       this.onEditCard(idCard);
@@ -90,7 +93,6 @@ export class RegisterCardComponent implements OnInit {
     if (this.form.valid) {
       const idCard = this.form.get('id')?.value;
 
-
       if (this.isNewRecord) {
         if (this.localStorage.getCard(idCard).length > 0) {
           this.error = 'Código já utilizado!'
@@ -107,8 +109,6 @@ export class RegisterCardComponent implements OnInit {
           class: this.form.get('class')?.value
         })
 
-        this.localStorage.createCard(idCard, this.card);
-
       } else {
         this.card[0].id = idCard;
         this.card[0].name = this.form.get('name')?.value;
@@ -118,9 +118,9 @@ export class RegisterCardComponent implements OnInit {
         this.card[0].type = this.form.get('type')?.value;
         this.card[0].class = this.form.get('class')?.value;
 
-        localStorage.setItem(idCard, JSON.stringify(this.card));
       }
 
+      this.localStorage.setCard(idCard, this.card);
       this.form.reset();
       this.route.navigateByUrl('');
 

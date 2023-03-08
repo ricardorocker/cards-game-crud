@@ -11,11 +11,9 @@ export class LocalStorageService {
     this.storage = window.localStorage;
   }
 
-  createCard(key: string, value: Card[]) {
+  setCard(key: string, value: Card[]) {
     this.storage.setItem(key, JSON.stringify(value))
   }
-
-  updateCard(){}
 
   getCard(key: string): Card[] {
     return JSON.parse(this.storage.getItem(key) || '{}')

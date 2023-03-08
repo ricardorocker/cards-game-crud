@@ -9,12 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   cards: Card[] = [];
+  queryInput: string = '';
+  cardsFound: Card[] = [];
 
   constructor(
     private localStorageService: LocalStorageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.cards = this.localStorageService.getAllCards();
+    this.cardsFound = this.cards;
+  }
+
+  searchCards(): void {
+    const value = this.queryInput;
+
+    this.cardsFound = this.cards.filter(card => {
+      return card.name.toLowerCase().includes(value.toLowerCase())
+        || card.type.toLowerCase().includes(value.toLowerCase())
+        || card.class.toLowerCase().includes(value.toLowerCase())
+        || card.id.toString().includes(value);
+    });
   }
 }

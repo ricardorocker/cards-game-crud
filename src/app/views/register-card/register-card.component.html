@@ -2,12 +2,11 @@
 <div class="row">
   <div class="col">
     <div class="card px-5" style="width: 40rem;">
-      <form [formGroup]="form" (ngSubmit)="onCreateCard()">
+      <form [formGroup]="form" (ngSubmit)="submitCard()">
         <div class="form-group">
           <label>Código*</label>
           <input type="number" class="form-control" name="id" id="id" formControlName="id"
             placeholder="Insira o código">
-            <!-- (change)="onChange($event)" -->
         </div>
         <div class="form-group">
           <label>Nome*</label>
@@ -47,9 +46,5 @@
         {{ error }}
       </div>
     </div>
-  </div>
-
-  <div class="col" *ngIf="card.length > 0">
-    <app-card-game [cards]="card"></app-card-game>
   </div>
 </div>

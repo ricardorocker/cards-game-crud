@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core';
 export class CardGameComponent {
   @Input() cards: Card[] = [];
   @Input() hasFooter: boolean = false;
+  @Input() onEdit: boolean = false;
 
   constructor(private localStorageService: LocalStorageService) {}
 

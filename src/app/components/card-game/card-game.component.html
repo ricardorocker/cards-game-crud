@@ -1,8 +1,8 @@
 <div class="text-center">
   <div class="row d-flex justify-content-center">
-    <div *ngFor="let card of cards" class="card my-4 mx-2" style="width: 16rem;">
+    <div *ngFor="let card of cards" class="card my-4 mx-2" [ngStyle]="onEdit ? {width: '24rem', height: '30rem', fontSize: '25px' } : {width: '16rem'}">
       <div class="card-top">
-        <h5 class="card-title my-4">{{card.name}}</h5>
+        <h5 class="card-title my-4">{{card.id}} - {{card.name}}</h5>
         <p class="card-text">{{card.description}}</p>
         <div class="row">
           <p class="col card-text">{{card.class}} - {{card.type}}</p>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="card-footer" *ngIf="hasFooter">
-        <button class="btn btn-info mx-2">Editar</button>
+        <button class="btn btn-info mx-2" routerLink="edit-card/{{card.id}}">Editar</button>
         <button class="btn btn-danger mx-2" (click)="onRemoveCard(card)">Deletar</button>
       </div>
     </div>

@@ -5,7 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'create-card', component: RegisterCardComponent}
+  { path: 'create-card', component: RegisterCardComponent},
+  { path: 'edit-card/:id', component: RegisterCardComponent }
 ];
 
 @NgModule({

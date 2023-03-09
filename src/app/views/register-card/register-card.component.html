@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mx-3">
   <div class="col">
     <div class="card px-5" style="max-width: 40rem;">
       <form [formGroup]="form" (ngSubmit)="submitCard()">
@@ -14,7 +14,7 @@
           <div class="col-2">
             <div class="form-group">
               <label>Código*</label>
-              <input type="number" class="form-control" name="id" id="id" formControlName="id" placeholder="nº">
+              <input type="number" class="form-control" name="id" id="id" formControlName="id" placeholder="nº" min="0">
             </div>
           </div>
           <div class="col-10">
@@ -55,14 +55,14 @@
             <div class="form-group">
               <label>⚔️ Ataque*</label>
               <input class="form-control" type="number" name="atack" id="atack" formControlName="atack"
-                placeholder="Insira o ataque">
+                placeholder="Insira o ataque (0-10)" min="0" max="10">
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
               <label>🛡️ Defesa*</label>
               <input class="form-control" type="number" name="defense" id="defense" formControlName="defense"
-                placeholder="Insira a defesa">
+                placeholder="Insira a defesa (0-10)" min="0" max="10">
             </div>
           </div>
         </div>

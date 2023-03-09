@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { LocalStorageService } from './../../services/local-storage.service';
-import { Card } from './../../interfaces/card';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-card-game',

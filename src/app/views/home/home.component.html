@@ -11,14 +11,14 @@
   <app-card-game [cards]="cardsFound" [hasFooter]="true"></app-card-game>
 </div>
 <ng-template #templateName>
-  <div class="alert alert-success mx-4" role="alert">
-    <h4 class="alert-heading">Seja bem vindo!</h4>
-    <p>Esse é um criador de cartas do jogo HearthStone, <a routerLink="/create-card" class="alert-link">crie sua
+  <div class="alert alert-light mx-4" role="alert">
+    <h4 class="alert-heading text-success">Seja bem vindo!</h4>
+    <p>Esse é um criador de cartas do jogo HearthStone, <a routerLink="/create-card" class="alert-link text-success">crie sua
         primeira carta!</a> HearthStone é um jogo de cartas, jogado em turnos, cada jogador recebe suas cartas onde cada
       oponente precisa eliminar o outro.</p>
     <hr>
     <p class="mb-0">Desenvolvido com Angular e Bootstrap por <a href="https://ricardorocker.com/" target="_blank"
-        class="alert-link">Ricardo Rocker</a>.</p>
+        class="alert-link text-success">Ricardo Rocker</a>.</p>
   </div>
   <div class="text-center my-4">
     <button class="btn btn-success" routerLink="/create-card">

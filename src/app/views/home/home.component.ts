@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Card } from './../../interfaces/card';
+import { Card } from '../../models/card';
 import { LocalStorageService } from './../../services/local-storage.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { LocalStorageService } from './../../services/local-storage.service';
 })
 export class HomeComponent implements OnInit {
   cards: Card[] = [];
-  queryInput: string = '';
   cardsFound: Card[] = [];
+  queryInput: string = '';
 
   constructor(
     private localStorageService: LocalStorageService
@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.cards = this.localStorageService.getAllCards();
     this.cardsFound = this.cards;
+    this.cardsFound.sort((a, b) => {
+      return (a.id > b.id) ? 1 : -1
+    })
   }
 
   searchCards(): void {

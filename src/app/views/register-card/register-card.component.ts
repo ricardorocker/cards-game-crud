@@ -1,8 +1,9 @@
-import { Card } from './../../interfaces/card';
-import { LocalStorageService } from './../../services/local-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { Card } from './../../interfaces/card';
+import { LocalStorageService } from './../../services/local-storage.service';
 
 @Component({
   selector: 'app-register-card',
@@ -13,7 +14,8 @@ export class RegisterCardComponent implements OnInit {
   form!: FormGroup;
   card: Card[] = [];
   error: string = '';
-  isNewRecord: boolean = false;
+  isNewRecord: boolean = true;
+  submitButtonName: string = 'Criar nova carta';
 
   types = [
     { name: 'Magia', value: "Magia" },
@@ -38,8 +40,8 @@ export class RegisterCardComponent implements OnInit {
       id: ['', Validators.required],
       name: ['', Validators.required],
       description: ['', Validators.required],
-      atack: ['', Validators.required],
-      defense: ['', Validators.required],
+      atack: ['', Validators.compose([Validators.required, Validators.min(0), Validators.max(10)])],
+      defense: ['', Validators.compose([Validators.required, Validators.min(0), Validators.max(10)])],
       type: ['', Validators.required],
       class: ['', Validators.required]
     })
@@ -48,11 +50,9 @@ export class RegisterCardComponent implements OnInit {
   ngOnInit(): void {
     const idCard = this.activateRoute.snapshot.paramMap.get('id');
 
-    console.log("EDIT - idCard: ", idCard);
-    console.log("EDIT - localStorage: ", localStorage);
-
     if (idCard) {
       this.isNewRecord = false;
+      this.submitButtonName = 'Atualizar carta';
       this.onEditCard(idCard);
     } else {
       this.isNewRecord = true;
@@ -78,6 +78,7 @@ export class RegisterCardComponent implements OnInit {
   findInvalidControls(): void {
     const invalidControls = [];
     const controls = this.form.controls;
+
     for (const name in controls) {
       if (controls[name].invalid) {
         invalidControls.push(this.getDescription(name));

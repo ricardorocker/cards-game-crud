@@ -1,6 +1,7 @@
+import { Component, Input } from '@angular/core';
+
 import { LocalStorageService } from './../../services/local-storage.service';
 import { Card } from './../../interfaces/card';
-import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-game',
@@ -10,7 +11,6 @@ import { Component, Input } from '@angular/core';
 export class CardGameComponent {
   @Input() cards: Card[] = [];
   @Input() hasFooter: boolean = false;
-  @Input() onEdit: boolean = false;
 
   constructor(private localStorageService: LocalStorageService) {}
 

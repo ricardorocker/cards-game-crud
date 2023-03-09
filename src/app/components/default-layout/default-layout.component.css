@@ -1,0 +1,19 @@
+.hearthstone-title {
+  color: rgb(208, 163, 27);
+  font-size: 40px;
+  text-shadow: -1px 0 rgb(75, 59, 8), 0 1px rgb(75, 59, 8), 1px 0 rgb(75, 59, 8), 0 -1px rgb(75, 59, 8);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.hearthstone-title:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.first-letter {
+  font-size: 50px;
+}
+
+.h4 {
+  letter-spacing: 2px;
+}

@@ -1,46 +1,83 @@
-<button class="btn btn-link my-4" routerLink="">Voltar para Home</button>
 <div class="row">
   <div class="col">
-    <div class="card px-5" style="width: 40rem;">
+    <div class="card px-5" style="max-width: 40rem;">
       <form [formGroup]="form" (ngSubmit)="submitCard()">
-        <div class="form-group">
-          <label>Código*</label>
-          <input type="number" class="form-control" name="id" id="id" formControlName="id"
-            placeholder="Insira o código">
+        <div class="row mt-2">
+          <div class="col-10">
+            <div class="title-form">{{ submitButtonName | uppercase }}</div>
+          </div>
+          <div class="col-2 d-flex flex-row-reverse">
+            <img src="../../../assets/hearthstone2.JPG" alt="logo-hearthstone" width="60">
+          </div>
         </div>
-        <div class="form-group">
-          <label>Nome*</label>
-          <input class="form-control" type="text" name="name" id="name" formControlName="name"
-            placeholder="Insira o nome">
+        <div class="row">
+          <div class="col-2">
+            <div class="form-group">
+              <label>Código*</label>
+              <input type="number" class="form-control" name="id" id="id" formControlName="id" placeholder="nº">
+            </div>
+          </div>
+          <div class="col-10">
+            <div class="form-group">
+              <label>Nome*</label>
+              <input class="form-control" type="text" name="name" id="name" formControlName="name"
+                placeholder="Insira o nome">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Descrição*</label>
-          <input class="form-control" type="text" name="description" id="description" formControlName="description"
-            placeholder="Insira a descrição">
+        <div class="row">
+          <div class="form-group">
+            <label>Descrição*</label>
+            <textarea class="form-control" type="text" rows="4" name="description" id="description"
+              formControlName="description" placeholder="Insira a descrição"></textarea>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Ataque*</label>
-          <input class="form-control" type="number" name="atack" id="atack" formControlName="atack"
-            placeholder="Insira o ataque">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <span class="form-group">Tipo*</span>
+              <select class="form-select" name="type" id="type" formControlName="type">
+                <option *ngFor="let type of types" [ngValue]="type.value">{{ type.name }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <span class="form-group">Classe*</span>
+              <select class="form-select" name="class" id="class" formControlName="class">
+                <option *ngFor="let class of classes" [ngValue]="class.value">{{ class.name }}</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Defesa*</label>
-          <input class="form-control" type="number" name="defense" id="defense" formControlName="defense"
-            placeholder="Insira a defesa">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label>⚔️ Ataque*</label>
+              <input class="form-control" type="number" name="atack" id="atack" formControlName="atack"
+                placeholder="Insira o ataque">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label>🛡️ Defesa*</label>
+              <input class="form-control" type="number" name="defense" id="defense" formControlName="defense"
+                placeholder="Insira a defesa">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <span class="form-group">Tipo*</span>
-          <select class="form-control" name="type" id="type" formControlName="type">
-            <option *ngFor="let type of types" [ngValue]="type.value">{{ type.name }}</option>
-          </select>
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-secondary my-4 w-100" routerLink="">
+              Cancelar
+            </button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-success my-4 w-100" type="submit">
+              {{ submitButtonName }}
+            </button>
+          </div>
         </div>
-        <div class="form-group">
-          <span class="form-group">Classe*</span>
-          <select class="form-control" name="class" id="class" formControlName="class">
-            <option *ngFor="let class of classes" [ngValue]="class.value">{{ class.name }}</option>
-          </select>
-        </div>
-        <button class="btn btn-success my-4 w-100" type="submit">Criar nova carta</button>
       </form>
       <div *ngIf="error" class="alert alert-danger" role="alert">
         {{ error }}

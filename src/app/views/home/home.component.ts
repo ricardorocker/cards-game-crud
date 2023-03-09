@@ -1,6 +1,7 @@
+import { Component, OnInit } from '@angular/core';
+
 import { Card } from './../../interfaces/card';
 import { LocalStorageService } from './../../services/local-storage.service';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',

@@ -1,11 +1,17 @@
 <div class="text-center">
   <div class="row d-flex justify-content-center">
-    <div *ngFor="let card of cards" class="card my-4 mx-2" [ngStyle]="onEdit ? {width: '24rem', height: '30rem', fontSize: '25px' } : {width: '16rem'}">
-      <div class="card-top">
-        <h5 class="card-title my-4">{{card.id}} - {{card.name}}</h5>
-        <p class="card-text">{{card.description}}</p>
+    <div *ngFor="let card of cards" class="card card-master my-4 mx-4" style="width: 16rem;">
+      <div class="card-top" style="height: 230px;">
+        <h5 class="card-title mt-5" style="height: 48px;">
+          <div class="logo-hearthstone">
+            <img src="../../../assets/hearthstone2.JPG" alt="logo-hearthstone" width="33">
+          </div>
+          <span class="codigo">{{card.id}}</span>
+          <div class="name mt-3">{{card.name | uppercase}}</div>
+        </h5>
+        <div class="card-text">{{card.description}}</div>
         <div class="row">
-          <p class="col card-text">{{card.class}} - {{card.type}}</p>
+          <div class="pt-3 type-class">{{card.type | uppercase}} - {{card.class | uppercase}}</div>
         </div>
       </div>
       <div class="card-body">
@@ -14,7 +20,7 @@
           <div class="col">🛡️ {{card.defense}}</div>
         </div>
       </div>
-      <div class="card-footer" *ngIf="hasFooter">
+      <div class="card-footer bg-transparent" *ngIf="hasFooter">
         <button class="btn btn-info mx-2" routerLink="edit-card/{{card.id}}">Editar</button>
         <button class="btn btn-danger mx-2" (click)="onRemoveCard(card)">Deletar</button>
       </div>

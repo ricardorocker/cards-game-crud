@@ -1,27 +1,52 @@
-# CardsGameCrud
+# Gerenciador de cartas do HearthStone
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+Esse projeto criado do zero, consiste em uma CRUD completa feita em **ANGULAR** e Bootstrap usando localStorage como base.
 
-## Development server
+## Instalando o projeto
+1. Escolha o diretório onde deseja salvar o projeto na sua máquina.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. Abra seu terminal ou git e clone o projeto utilizando o comando a seguir:
+```
+git clone https://github.com/ricardorocker/cards-game-crud.git
+```
+3. Instale as dependências do projeto, rodando o seguinte comando na raíz do projeto:
+```
+npm install
+```
 
-## Code scaffolding
+## Rodando o ambiente de desenvolvimento
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Para rodar o ambiente de desenvolvimento, utilize o seguinte comando na raíz do projeto:
+```
+ng serve
+```
+2. Abra o seu navegador web e insira o endereço http://localhost:4200/
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Rodando a build de deploy da aplicação
 
-## Running unit tests
+1. Para rodar a build de deploy da aplicação rode o seguinte comando na raíz do projeto:
+```
+ng build --prod
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Motivação para escolher a biblioteca Bootstrap
+Eu já utilizo o Bootstrap no meu dia a dia na empresa que trabalho atualmente e recentemente criei meu site pessoal com ele também. O Bootstrap facilita e acelera o desenvolvimento de sites e aplicativo, economizando tempo, aumentando a produtividade e a responsividade.
 
-## Running end-to-end tests
+## Estrutura do projeto
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Para organizar melhor a visualização da estrutura do projeto, foi removido o arquivo app.component.html e app.component.css, que são arquivos desnecessários, e criado mais três pastas:
 
-## Further help
+- **Components**: 
+  - default-layout.component, que é o template que o app.component referencia;
+  - card-game.component, responsavel pelo template dos cards;
+- **Views**: 
+  - home.component, para visualização de todos cards cadastrados;
+  - register.card.component, responsavel pela criação e edição dos cards com formulários reativos;
+- **Services**:
+  - Onde são feitas todas requisições para base(localStorage);
+- **Models**:
+  - cards.ts, responsavel pelo padrão dos dados do banco, tipando cada campo;
+  - Enums: classes.enum.ts e types.enum.ts para popular os selects do formulário;
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+https://user-images.githubusercontent.com/76121782/223915446-e853ae6c-1033-4d24-9d84-c294bd0302d4.mp4
